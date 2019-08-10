@@ -1,0 +1,109 @@
+html, body {
+    width: 100%;
+    height: 100%;
+}
+/* FONTS
+font-family: 'Red Hat Display', sans-serif;
+font-family: 'Raleway', sans-serif;
+font-family: 'Nunito', sans-serif;
+font-family: 'Monoton', cursive;
+font-family: 'Allerta Stencil', sans-serif; */
+
+.navbar {
+    background-color: #1a1a1a;
+    padding: 1% 0;
+    font-size: 1.2em;
+}
+
+.home {
+    background: url(img/space-bg.jpg) no-repeat center center fixed;
+    /* display: table; */
+    height: 100%;
+    position: relative;
+    width: 100%;
+    background-size: cover;
+    /* z-index: -10; */
+}
+
+.landing-text{
+    /* display: table-cell; */
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-family: 'Raleway', sans-serif;
+}
+
+.landing-text h1{
+    font-size: 300%;
+    font-weight: 300;
+    font-family: 'Allerta Stencil', sans-serif;
+}
+
+.padding {
+    padding: 40px 0px 80px 0px;
+}
+
+.padding img{
+    width: 100%;
+}
+
+footer{
+    width: 100%;
+    background-color: #23415C;
+    padding: 5% 5% 10% 5%;
+    color: #FFF;
+    font-family: 'Raleway', sans-serif;
+}
+
+input[type="file"] {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    border: 0;
+}
+.custom-file-upload {
+    /* border: 1px solid #ccc;
+    display: inline-block;
+    padding: 6px 12px; */
+    cursor: pointer;
+    font-family: 'Raleway', sans-serif;
+}
+.photo {
+    display: none;
+}
+
+.model-header{
+    color: #23415C;
+}
+
+.analysis{
+    max-height: 400px;
+    overflow-y: hidden;
+    overflow-y: scroll;
+    margin: 10px;
+    font-family: 'Red Hat Display', sans-serif;
+}
+
+hr{
+    border: 1px solid darkgray;
+  border-radius: 1em;
+}
+
+.badge-pill{
+    text-align: right
+}
+
+.collapse a, footer a{
+    color: aliceblue;
+}
+
+.body-heading{
+    font-family: 'Raleway', sans-serif;
+}
