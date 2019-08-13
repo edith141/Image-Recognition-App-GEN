@@ -47,9 +47,11 @@ function predictFromWorkflow(photoUrl) {
   app.workflow.predict(workflowId, { base64: photoUrl }).then(
     function (response) {
       let outputs = response.results[0].outputs;
-      let analysis = $(".analysis");
+      let analysis = document.querySelector('#analysis');
+      console.log(analysis);
       
-      analysis.empty();
+      // analysis.empty();
+      console.log(analysis);
       console.log(outputs);
       
       outputs.forEach(function (output) {
@@ -62,15 +64,15 @@ function predictFromWorkflow(photoUrl) {
         let newModelHeader = document.createElement("h2");
         newModelHeader.innerHTML = modelName + "<hr>";
         newModelHeader.className = "model-header";
-        
+        console.log(newModelHeader)
         let formattedString = getFormattedString(output);
         let newModelText = document.createElement("p");
         newModelText.innerHTML = formattedString;
         newModelText.className = "model-text";
         
-        newModelSection.append(newModelHeader);
-        newModelSection.append(newModelText);
-        analysis.append(newModelSection);
+        newModelSection.appendChild(newModelHeader);
+        newModelSection.appendChild(newModelText);
+        analysis.appendChild(newModelSection);
       });
       processing.classList.toggle('d-none');
     },
@@ -97,32 +99,35 @@ function predictFromWorkflow(photoUrl) {
     let formattedString = "";
     let data = output.data;
     let maxItems = 3;
-    let maxItems2 = 6;
+    // let maxItems2 = 6;
     // General
     if (output.model.model_version.id === "26b62d8c6ea04ed9be12c3c63f4a59da") {
       let items = data.concepts;
       if (items.length < 6) {
-        maxItems2 = items.length;
-        if (maxItems2 === 1) {
+       // maxItems2 = items.length;
+        if (maxItems === 1) {
           formattedString = "The most probable concept for this image is:";
         }
       } else {
-        formattedString = "The " + maxItems2 + " most probable concepts for this image are:";
+        formattedString = "The " + maxItems + " most probable concepts for this image are:";
       }
       
-      for (let i = 0; i < maxItems2; i++) {
+      for (let i = 0; i < maxItems; i++) {
         formattedString += "<br/>- " + items[i].name + " with " + '<span class="badge badge-pill badge-success">' + (Math.round(items[i].value * 10000) / 100) + "% probability" + '</span>';
       }
     }
     // Apparel 
     else if (output.model.model_version.id === "dc2cd6d9bff5425a80bfe0c4105583c1") {
       let items = data.concepts;
+      console.log('apr');
       if (items.length < maxItems) {
         maxItems = items.length;
         if (maxItems === 1) {
+          console.log('apppr1');
           formattedString = "The most probable detected concept for the piece of apparel is:";
         }
       } else {
+        console.log('apprn');
         formattedString = "The " + maxItems + " most probable detected concepts for the pieces of apparel are:";
       }
       
@@ -133,23 +138,35 @@ function predictFromWorkflow(photoUrl) {
     }
     // Celebrity
     else if (output.model.model_version.id === "bdb0537982ae4e0da563ed836ccfa065") {
+      if(data.regions){
       let items = data.regions;
-      if (data.regions.length === 1) {
+      console.log('celebs');
+      if (data.regions.length === 1) {console.log('celebs1');
         formattedString = "The most probable celebrity detected in this picture is:<br/>";
-      } else {
+        
+      } else {console.log('celebsn');
         formattedString = "The most probable celebrities detected in this picture are:<br/>";
+        
       }
-      
       for (let i = 0; i < items.length; i++) {
         let item = items[i].data.face.identity.concepts[0];
+        console.log('celebsi');
         formattedString += "- " + item.name + " with " + '<span class="badge badge-pill badge-success">' + (Math.round(item.value * 10000) / 100) + "% probability" + '</span>' + "<br/>";
         // formattedString += "- " + item.name + " at a " + (Math.round(item.value * 10000) / 100) + "% probability<br/>";
         // formattedString += "<br/>- " + items[i].name + " with " + '<span class="badge badge-pill badge-success">'+ (Math.round(items[i].value * 10000) / 100) + "% probability" +'</span>';
       }
     }
+    else{        formattedString = "None were detected for this picture. <br/>";
+    return formattedString;
+    // return;
+  }
+      
+      
+    }
     // Color
     else if (output.model.model_version.id === "dd9458324b4b45c2be1a7ba84d27cd04") {
       let items = data.colors;
+      console.log('col');
       if (items.length < maxItems) {
         maxItems = items.length;
         if (maxItems === 1) {
@@ -166,6 +183,7 @@ function predictFromWorkflow(photoUrl) {
     // Demographics
     else if (output.model.model_version.id === "f783f0807c52474c8c6ad20c8cf45fc0") {
       let items = data.regions;
+      console.log('demo');
       formattedString = "The most probable racial origin concepts detected are:";
       
       for (let i = 0; i < items.length; i++) {
@@ -292,6 +310,7 @@ function predictFromWorkflow(photoUrl) {
     // Travel
     else if (output.model.model_version.id === "d2ffbf9730fd41fea79063270847be82") {
       let items = data.concepts;
+      console.log('travel');
       if (items.length < maxItems) {
         maxItems = items.length;
         if (maxItems === 1) {
