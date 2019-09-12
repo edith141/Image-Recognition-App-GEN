@@ -10,6 +10,9 @@
     <script type="text/javascript" src="https://sdk.clarifai.com/js/clarifai-latest.js"></script>
     <!-- <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
     <link href="https://fonts.googleapis.com/css?family=Allerta+Stencil|Monoton|Nunito|Raleway|Red+Hat+Display&display=swap" rel="stylesheet">
+    <script type="text/javascript" src="libs/StackBoxBlur.js"></script>
+    <script type="text/javascript" src="libs/StackBoxBlurWrapper.js"></script>
+
     <title>Recognito</title>
 </head>
 
@@ -20,7 +23,7 @@
             <div class="bg-dark p-4 text-light">
                 <h5 class="text-white h4">Collapsed content</h5>
                 <strong><i class="fas fa-dragon"></i> <span class="edith">EDITH</span></strong>
-                <br>TI'm a web developer, ML enthusiast, and love to try new new things.<br>
+                <br>I'm a web developer, ML enthusiast, and love to try new new things.<br>
                 Follow me on:<br>
                 <a class="fab fa-github-square fa-2x" href="google.com"> </a>&nbsp;
                 <i class="fab fa-facebook-square fa-2x"></i>&nbsp;
@@ -74,7 +77,21 @@
                 <div class="col-md-6">
                     <div class="upload-photo">
                         <div class="photo-container">
-                            <img src="" alt="Image Preview" class="photo img-responsive">
+                            <img src="" alt="Image Preview" class="photo img-responsive" id = "photo">
+                        </div>
+                        
+                        <div>
+                            <h5 class = "body-heading">Select a concept</h4>
+                            <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                                <label class="btn btn-secondary active">
+                                  <input type="radio" name="options" id="option1" value="allmodelworkflow" autocomplete="off" checked> All
+                                </label>
+                                <label class="btn btn-secondary">
+                                  <input type="radio" name="options" id="option2" value="moderation" autocomplete="off"> Moderation
+                                </label>
+                              </div>
+    
+
                         </div>
                         
                         

@@ -16,12 +16,21 @@ function uploadImage() {
   let preview = document.querySelector('img');
   let file = document.querySelector('input[type=file]').files[0];
   let reader = new FileReader();
+  if (document.getElementById('option2').checked) {
+    workflowId = document.getElementById('option2').value;
+    console.log(workflowId);
+  }
+  else {
+    workflowId = 'allmodelworkflow';
+  }
+  document.querySelector('#analysis').innerHTML = "";
   
   reader.addEventListener("load", function () {
-    preview.src = reader.result;
+    
     let imageData = reader.result;
     imageData = imageData.replace(/^data:image\/(.*);base64,/, '');
     predictFromWorkflow(imageData);
+    preview.src = reader.result;
   }, false);
   
   if (file) {
@@ -270,6 +279,20 @@ function predictFromWorkflow(photoUrl) {
     // Moderation
     else if (output.model.model_version.id === "aa8be956dbaa4b7a858826a84253cab9") {
       let items = data.concepts;
+      console.log(items[0].name);
+      // if (items[0].name == 'Explicit' || 'suggestive') {
+      //   console.log('EXP!!!');
+      //   var photo = new stackBoxBlurIt('photo').blurit(40)
+      //   photo.onmouseover = function(){
+      //     this.blurit(0, 2000)
+      //   }
+      //   photo.onmouseout = function(){
+      //     this.blurit(40, 2000)
+      //   }
+      // } 
+      if (items[0].name == 'Explicit' || 'suggestive') {
+        document.querySelector('.photo').classList.add('blur');
+      }
       formattedString = "This photo is/contains:";
       for (let i = 0; i < items.length; i++) {
         formattedString += "<br/>- " + items[i].name + " at a " + (Math.round(items[i].value * 10000) / 100) + "% probability";
