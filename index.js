@@ -11,18 +11,25 @@ let app = new Clarifai.App({
   apiKey: clarifaiApiKey
 });
 
+//setModel
+const setModel = (modelName) => {
+  workflowId = modelName;
+  console.log(workflowId);
+}
+
+
 // Handles image upload
 function uploadImage() {
   let preview = document.querySelector('img');
   let file = document.querySelector('input[type=file]').files[0];
   let reader = new FileReader();
-  if (document.getElementById('option2').checked) {
-    workflowId = document.getElementById('option2').value;
-    console.log(workflowId);
-  }
-  else {
-    workflowId = 'allmodelworkflow';
-  }
+  // if (document.getElementById('option2').checked) {
+  //   workflowId = document.getElementById('option2').value;
+  //   console.log(workflowId);
+  // }
+  // else {
+  //   workflowId = 'allmodelworkflow';
+  // }
   document.querySelector('#analysis').innerHTML = "";
   
   reader.addEventListener("load", function () {
