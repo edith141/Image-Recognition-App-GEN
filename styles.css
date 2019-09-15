@@ -91,7 +91,7 @@ input[type="file"] {
     font-family: 'Red Hat Display', sans-serif;
 }
 
-hr{
+.model-header hr{
     border: 1px solid darkgray;
   border-radius: 1em;
 }
