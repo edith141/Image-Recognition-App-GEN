@@ -67,12 +67,40 @@
                     <h3 class="px-3 mb-3 body-heading">Analyse an image</h3>
                 </div>
             </div>
-            <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                <strong>Please note!</strong> The uploaded image is used to predict corresponding concepts using each model expicitly. It is possible, expected and very likely to see vague enteries in some models, given how relevant the image is to that model. This is done to showcase all the models in one go.
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
+            <div class="row mb-3">
+                <div class="col-sm-4 col-xl-3 mb-3">
+                  <div class="list-group " id="list-tab" role="tablist">
+                    <a class="list-group-item list-group-item-action active" id="list-home-list" data-toggle="list" href="#list-home" role="tab" aria-controls="home" onclick="setModel('allmodelworkflow')">All</a>
+                    <a class="list-group-item list-group-item-action" id="list-profile-list" data-toggle="list" href="#list-profile" role="tab" aria-controls="profile" onclick="setModel('moderation')">Image Moderation</a>
+                    <a class="list-group-item list-group-item-action" id="list-messages-list" data-toggle="list" href="#list-messages" role="tab" aria-controls="messages" onclick="setModel('foody')">Food items</a>
+                    <a class="list-group-item list-group-item-action" id="list-settings-list" data-toggle="list" href="#list-settings" role="tab" aria-controls="settings" onclick="setModel('apparel')">Apparel & accessories</a>
+                    <a class="list-group-item list-group-item-action" id="list-settings-list" data-toggle="list" href="#list-demographics" role="tab" aria-controls="settings" onclick="setModel('demographics')">Demographics</a>
+                  </div>
+                </div>
+                <div class="col-sm-8">
+                  <div class="tab-content" id="nav-tabContent">
+                    <div class="tab-pane fade show active" id="list-home" role="tabpanel" aria-labelledby="list-home-list">Use all the models to predict corresponding concepts and objects in the image. <div class="alert mt-3 alert-warning alert-dismissible fade show" role="alert">
+                        <strong>Please note!</strong> The uploaded image is used to predict corresponding concepts using each model expicitly. It is possible, expected and very likely to see vague enteries in some models, given how relevant the image is to that model. This is done to showcase all the models in one go.
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div> </div>
+                    <div class="tab-pane fade" id="list-profile" role="tabpanel" aria-labelledby="list-profile-list">This model identifies objects/concepts that are are not usually fit for public forums and may require moderation.
+                        It looks for things such as gore, drungs, expicit or suggestive nudity.
+                    <p> <br> Also, to showcase the use of this model more effectively, the image is blurred if it is found to contain any above mentioned things. This shows that manual moderation may very well be replaced with an automated system. </p></div>
+                    <div class="tab-pane fade" id="list-messages" role="tabpanel" aria-labelledby="list-messages-list">This model can predict the dish, cuisine, and even the food items down to ingridients level. This may be used in apps like Zomato, Swiggy, etc and any app that that involves food items (health & wellness apps, etc.).
+                        <p><br>The current dataset doesn't include Indian cuisines.  </p> 
+                    </div>
+                    <div class="tab-pane fade" id="list-settings" role="tabpanel" aria-labelledby="list-settings-list">This model can predict the clothings, accessories, etc. This may be used in e-commerce sites/apps like Myntra, Flipkart, and fashion curation sites as well.
+                            <p><br>The model can, at the moment, predict close to 100 such concepts.</p> 
+                    </div>
+                    <div class="tab-pane fade" id="list-demographics" role="tabpanel" aria-labelledby="list-settings-list">This model, as opposed to just face detection, analyzes and tries detecting the probable age, the gender, the ethnic/racial origin based on his/her appearance. 
+                            <p><br>Given the nature of this model, it may be used by organizations relying on such information or collecting such data.</p> 
+                    </div>
+                  </div>
+                </div>
               </div>
+            
             <div class="row">
                 <div class="col-md-6">
                     <div class="upload-photo">
@@ -80,7 +108,7 @@
                             <img src="" alt="Image Preview" class="photo img-responsive" id = "photo">
                         </div>
                         
-                        <div>
+                        <!-- <div>
                             <h5 class = "body-heading">Select a concept</h4>
                             <div class="btn-group btn-group-toggle" data-toggle="buttons">
                                 <label class="btn btn-secondary active">
@@ -93,7 +121,7 @@
     
 
                         </div>
-                        
+                         -->
                         
                         <label for="file-upload" class="custom-file-upload btn btn-info my-4">
                             <i class="fa fa-cloud-upload"></i> Upload image

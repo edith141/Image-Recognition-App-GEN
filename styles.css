@@ -11,9 +11,11 @@ font-family: 'Allerta Stencil', sans-serif; */
 
 .navbar {
     background-color: #1a1a1a;
-    padding: 1% 0;
+    /* padding: 1% 0; */
     font-size: 1.2em;
+    /* max-height: 60px; */
 }
+
 
 .home {
     background: url(img/space-bg.jpg) no-repeat center center fixed;
@@ -91,7 +93,7 @@ input[type="file"] {
     font-family: 'Red Hat Display', sans-serif;
 }
 
-hr{
+.model-header hr{
     border: 1px solid darkgray;
   border-radius: 1em;
 }

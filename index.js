@@ -11,18 +11,25 @@ let app = new Clarifai.App({
   apiKey: clarifaiApiKey
 });
 
+//setModel
+const setModel = (modelName) => {
+  workflowId = modelName;
+  console.log(workflowId);
+}
+
+
 // Handles image upload
 function uploadImage() {
   let preview = document.querySelector('img');
   let file = document.querySelector('input[type=file]').files[0];
   let reader = new FileReader();
-  if (document.getElementById('option2').checked) {
-    workflowId = document.getElementById('option2').value;
-    console.log(workflowId);
-  }
-  else {
-    workflowId = 'allmodelworkflow';
-  }
+  // if (document.getElementById('option2').checked) {
+  //   workflowId = document.getElementById('option2').value;
+  //   console.log(workflowId);
+  // }
+  // else {
+  //   workflowId = 'allmodelworkflow';
+  // }
   document.querySelector('#analysis').innerHTML = "";
   
   reader.addEventListener("load", function () {
@@ -193,18 +200,19 @@ function predictFromWorkflow(photoUrl) {
     else if (output.model.model_version.id === "f783f0807c52474c8c6ad20c8cf45fc0") {
       let items = data.regions;
       console.log('demo');
-      formattedString = "The most probable racial origin concepts detected are:";
+      formattedString = "The most probable ethnic origin concepts detected are: <hr/>";
       
       for (let i = 0; i < items.length; i++) {
         let item = items[i].data.face;
-        formattedString += "<br/>- " + item.multicultural_appearance.concepts[0].name + ", "
-        + item.gender_appearance.concepts[0].name + ", "
-        + item.age_appearance.concepts[0].name + " year old";
+        formattedString += `- A ${item.multicultural_appearance.concepts[0].name} 
+        ${(item.gender_appearance.concepts[0].name == 'masculine') ? 'male' : 'female'}, 
+        ${item.age_appearance.concepts[0].name} year old. <hr/>`;
       }
     }
     // Face Detection
-    else if (output.model.model_version.id === "c67b5872d8b44df4be55f2b3de3ebcbb") {
+    else if (output.model.model_version.id === "34ce21a40cc24b6b96ffee54aabff139") {
       let numFaces = data.regions.length;
+      console.log('FACE!')
       if (numFaces === 1) {
         formattedString = "1 face detected in the picture.";
       } else {
