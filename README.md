@@ -24,9 +24,10 @@ Upload an image to run it.
 ![](https://i.gyazo.com/9cf4f9ed9a6ff38b5ffea9d186280b54.png)
 
 ### Results (All models)
+![](https://i.gyazo.com/64b730a4e693dd2490c7b7235e04bed7.png)
+[GIF HERE](https://i.gyazo.com/9d16d2fe38cc384497e3b6be857a2208.gif)
 
-![](https://i.gyazo.com/9d16d2fe38cc384497e3b6be857a2208.gif)
-
+![](https://i.gyazo.com/30c066b8edbb25a0e0c77a29c43ee5e5.png)
 
 
 ## License
